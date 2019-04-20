@@ -4,11 +4,11 @@
 #
 Name     : perl-XML-XPath
 Version  : 1.44
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-xpath-perl/libxml-xpath-perl_1.42-1.debian.tar.xz
-Summary  : 'Parse and evaluate XPath statements.'
+Summary  : A set of modules for parsing and evaluating XPath statements
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-2.0 GPL-1.0
 Requires: perl-XML-XPath-bin = %{version}-%{release}
@@ -28,7 +28,6 @@ DESCRIPTION
 Summary: bin components for the perl-XML-XPath package.
 Group: Binaries
 Requires: perl-XML-XPath-license = %{version}-%{release}
-Requires: perl-XML-XPath-man = %{version}-%{release}
 
 %description bin
 bin components for the perl-XML-XPath package.
@@ -39,6 +38,7 @@ Summary: dev components for the perl-XML-XPath package.
 Group: Development
 Requires: perl-XML-XPath-bin = %{version}-%{release}
 Provides: perl-XML-XPath-devel = %{version}-%{release}
+Requires: perl-XML-XPath = %{version}-%{release}
 
 %description dev
 dev components for the perl-XML-XPath package.
@@ -65,7 +65,7 @@ man components for the perl-XML-XPath package.
 cd ..
 %setup -q -T -D -n XML-XPath-1.44 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/XML-XPath-1.44/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/XML-XPath-1.44/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
