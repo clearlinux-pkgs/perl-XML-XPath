@@ -4,16 +4,17 @@
 #
 Name     : perl-XML-XPath
 Version  : 1.44
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-xpath-perl/libxml-xpath-perl_1.42-1.debian.tar.xz
-Summary  : A set of modules for parsing and evaluating XPath statements
+Summary  : 'Parse and evaluate XPath statements.'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-2.0 GPL-1.0
 Requires: perl-XML-XPath-bin = %{version}-%{release}
 Requires: perl-XML-XPath-license = %{version}-%{release}
 Requires: perl-XML-XPath-man = %{version}-%{release}
+Requires: perl-XML-XPath-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Path::Tiny)
 BuildRequires : perl(XML::Parser)
@@ -60,18 +61,28 @@ Group: Default
 man components for the perl-XML-XPath package.
 
 
+%package perl
+Summary: perl components for the perl-XML-XPath package.
+Group: Default
+Requires: perl-XML-XPath = %{version}-%{release}
+
+%description perl
+perl components for the perl-XML-XPath package.
+
+
 %prep
 %setup -q -n XML-XPath-1.44
-cd ..
-%setup -q -T -D -n XML-XPath-1.44 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libxml-xpath-perl_1.42-1.debian.tar.xz
+cd %{_builddir}/XML-XPath-1.44
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/XML-XPath-1.44/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/XML-XPath-1.44/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -81,7 +92,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -90,8 +101,8 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-XML-XPath
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-XML-XPath/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-XML-XPath/deblicense_copyright
+cp %{_builddir}/XML-XPath-1.44/LICENSE %{buildroot}/usr/share/package-licenses/perl-XML-XPath/c5cff293e3705e11e692c1b57900e4bd96436630
+cp %{_builddir}/XML-XPath-1.44/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-XML-XPath/c71101ec4a33bd803c64272dfab9d2df393e3738
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -104,28 +115,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Boolean.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Builder.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Expr.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Function.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Literal.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/LocationPath.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Node.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Node/Attribute.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Node/Comment.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Node/Element.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Node/Namespace.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Node/PI.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Node/Text.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/NodeSet.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Number.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Parser.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/PerlSAX.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Root.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Step.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/Variable.pm
-/usr/lib/perl5/vendor_perl/5.28.2/XML/XPath/XMLParser.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -151,9 +140,34 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-XML-XPath/LICENSE
-/usr/share/package-licenses/perl-XML-XPath/deblicense_copyright
+/usr/share/package-licenses/perl-XML-XPath/c5cff293e3705e11e692c1b57900e4bd96436630
+/usr/share/package-licenses/perl-XML-XPath/c71101ec4a33bd803c64272dfab9d2df393e3738
 
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/xpath.1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Boolean.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Builder.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Expr.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Function.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Literal.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/LocationPath.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Attribute.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Comment.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Element.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Namespace.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/PI.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Text.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/NodeSet.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Number.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Parser.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/PerlSAX.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Root.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Step.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Variable.pm
+/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/XMLParser.pm
