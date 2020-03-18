@@ -4,7 +4,7 @@
 #
 Name     : perl-XML-XPath
 Version  : 1.44
-Release  : 15
+Release  : 16
 URL      : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-xpath-perl/libxml-xpath-perl_1.42-1.debian.tar.xz
@@ -102,7 +102,7 @@ make TEST_VERBOSE=1 test
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-XML-XPath
 cp %{_builddir}/XML-XPath-1.44/LICENSE %{buildroot}/usr/share/package-licenses/perl-XML-XPath/c5cff293e3705e11e692c1b57900e4bd96436630
-cp %{_builddir}/XML-XPath-1.44/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-XML-XPath/c71101ec4a33bd803c64272dfab9d2df393e3738
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-XML-XPath/c71101ec4a33bd803c64272dfab9d2df393e3738
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -149,25 +149,25 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Boolean.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Builder.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Expr.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Function.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Literal.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/LocationPath.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Attribute.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Comment.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Element.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Namespace.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/PI.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Node/Text.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/NodeSet.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Number.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Parser.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/PerlSAX.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Root.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Step.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/Variable.pm
-/usr/lib/perl5/vendor_perl/5.30.1/XML/XPath/XMLParser.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Boolean.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Builder.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Expr.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Function.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Literal.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/LocationPath.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Node.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Node/Attribute.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Node/Comment.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Node/Element.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Node/Namespace.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Node/PI.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Node/Text.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/NodeSet.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Number.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Parser.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/PerlSAX.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Root.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Step.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/Variable.pm
+/usr/lib/perl5/vendor_perl/5.30.2/XML/XPath/XMLParser.pm
