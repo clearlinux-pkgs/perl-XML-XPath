@@ -4,7 +4,7 @@
 #
 Name     : perl-XML-XPath
 Version  : 1.44
-Release  : 20
+Release  : 21
 URL      : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-xpath-perl/libxml-xpath-perl_1.42-1.debian.tar.xz
