@@ -4,7 +4,7 @@
 #
 Name     : perl-XML-XPath
 Version  : 1.44
-Release  : 24
+Release  : 25
 URL      : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.44.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libx/libxml-xpath-perl/libxml-xpath-perl_1.42-1.debian.tar.xz
@@ -149,25 +149,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Boolean.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Builder.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Expr.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Function.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Literal.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/LocationPath.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Node.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Node/Attribute.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Node/Comment.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Node/Element.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Node/Namespace.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Node/PI.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Node/Text.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/NodeSet.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Number.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Parser.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/PerlSAX.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Root.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Step.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/Variable.pm
-/usr/lib/perl5/vendor_perl/5.34.0/XML/XPath/XMLParser.pm
+/usr/lib/perl5/*
