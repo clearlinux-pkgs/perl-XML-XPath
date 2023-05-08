@@ -4,7 +4,7 @@
 #
 Name     : perl-XML-XPath
 Version  : 1.48
-Release  : 27
+Release  : 28
 URL      : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.48.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.48.tar.gz
 Summary  : 'Parse and evaluate XPath statements.'
